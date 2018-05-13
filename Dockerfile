@@ -1,6 +1,8 @@
-FROM httpd:2.4-alpine
+FROM httpd:2.4.33-alpine
 
-RUN apk add --no-cache awstats gettext \
+ENV AWSTATS_VERSION 7.6-r2
+
+RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext \
     && echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
     && apk add --no-cache apache2-mod-perl \
     && echo 'Include conf/awstats_httpd.conf' >> /usr/local/apache2/conf/httpd.conf
