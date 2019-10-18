@@ -1,11 +1,22 @@
-FROM httpd:2.4.33-alpine
+FROM httpd:2.4.41-alpine
 
-ENV AWSTATS_VERSION 7.6-r2
+ENV AWSTATS_VERSION 7.7-r0
+ENV MOD_PERL_VERSION 2.0.11
 
 RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext \
-    && echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
-    && apk add --no-cache apache2-mod-perl \
-    && echo 'Include conf/awstats_httpd.conf' >> /usr/local/apache2/conf/httpd.conf
+    && apk add --no-cache --virtual .build-dependencies gcc libc-dev make wget perl-dev \
+    && cd /tmp \
+    && wget https://www-eu.apache.org/dist/perl/mod_perl-$MOD_PERL_VERSION.tar.gz \
+    && tar xf mod_perl-$MOD_PERL_VERSION.tar.gz \
+    && cd mod_perl-$MOD_PERL_VERSION \
+    && perl Makefile.PL MP_APXS=/usr/local/apache2/bin/apxs MP_APR_CONFIG=/usr/bin/apr-1-config --cflags --cppflags --includes \
+    && make -j4 \
+    && mv src/modules/perl/mod_perl.so /usr/local/apache2/modules/ \
+    && echo 'LoadModule perl_module modules/mod_perl.so' >> /usr/local/apache2/conf/httpd.conf \
+    && echo 'Include conf/awstats_httpd.conf' >> /usr/local/apache2/conf/httpd.conf \
+    && cd .. \
+    && rm -rf ./mod_perl-$MOD_PERL_VERSION* \
+    && apk del .build-dependencies
 
 ADD awstats_env.conf /etc/awstats/
 ADD awstats_httpd.conf /usr/local/apache2/conf/
