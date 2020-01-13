@@ -1,6 +1,7 @@
 #!/bin/sh
 
-/usr/sbin/crond -L /var/lib/awstats/crond.log -l 8
+[[ -f /usr/local/bin/autorun.sh ]] && . /usr/local/bin/autorun.sh
+
 envsubst < /etc/awstats/awstats_env.conf > /etc/awstats/awstats.conf
 
 exec "$@"
