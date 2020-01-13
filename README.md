@@ -40,7 +40,7 @@ Run extra commands on the entrypoint
 ------------------------------------
 
 If you need to execute some command before httpd starts (i.e. a cron daemon inside
-the container), you can bind-mount a file /usr/local/bin/autorun.sh that will
+the container), you can bind-mount a file `/usr/local/bin/autorun.sh` that will
 be executed during the entrypoint. Add the following volume
 
 ```
