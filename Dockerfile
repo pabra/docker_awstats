@@ -3,7 +3,7 @@ FROM httpd:2.4.41-alpine
 ENV AWSTATS_VERSION 7.7-r0
 ENV MOD_PERL_VERSION 2.0.11
 
-RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext \
+RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata \
     && apk add --no-cache --virtual .build-dependencies gcc libc-dev make wget perl-dev \
     && cd /tmp \
     && wget https://www-eu.apache.org/dist/perl/mod_perl-$MOD_PERL_VERSION.tar.gz \

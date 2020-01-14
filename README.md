@@ -32,6 +32,14 @@ Add this line to your `/etc/crontab` to let Awstats analyze your logs every 10 m
 */10 * * * * root docker exec awstats awstats_updateall.pl now > /dev/null
 ```
 
+By default, the timezone in the container will be UTC. To configure a different 
+timezone in your container, set the environment variable `TZ` to your timezone, 
+adding the following to your command line at the container start:
+
+```
+    --env TZ="Antarctica/South_Pole"
+```
+
 
 Advanced
 ========
