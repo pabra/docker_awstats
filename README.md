@@ -32,9 +32,30 @@ Add this line to your `/etc/crontab` to let Awstats analyze your logs every 10 m
 */10 * * * * root docker exec awstats awstats_updateall.pl now > /dev/null
 ```
 
+By default, the timezone in the container will be UTC. To configure a different 
+timezone in your container, set the environment variable `TZ` to your timezone, 
+adding the following to your command line at the container start:
+
+```
+    --env TZ="Antarctica/South_Pole"
+```
+
 
 Advanced
 ========
+
+Run extra commands on the entrypoint
+------------------------------------
+
+If you need to execute some command before httpd starts (i.e. a cron daemon inside
+the container), you can bind-mount a file `/usr/local/bin/autorun.sh` that will
+be executed during the entrypoint. Add the following volume
+
+```
+...
+    --volume /path/to/my/autorun.sh:/usr/local/bin/autorun.sh:ro \
+...
+```
 
 Analyze old log files
 ---------------------
@@ -104,3 +125,4 @@ for lf in "${LOGFILES[@]}"; do
     docker exec awstats /usr/lib/awstats/cgi-bin/awstats.pl -update -config=my_website -LogFile="$lf"
 done
 ```
+
