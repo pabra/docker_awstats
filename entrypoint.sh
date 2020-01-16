@@ -1,6 +1,6 @@
 #!/bin/sh
 
-[[ -f /usr/local/bin/autorun.sh ]] && . /usr/local/bin/autorun.sh
+[ -x /usr/local/bin/autorun.sh ] && . /usr/local/bin/autorun.sh
 
 envsubst < /etc/awstats/awstats_env.conf > /etc/awstats/awstats.conf
 

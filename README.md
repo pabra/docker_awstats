@@ -32,8 +32,8 @@ Add this line to your `/etc/crontab` to let Awstats analyze your logs every 10 m
 */10 * * * * root docker exec awstats awstats_updateall.pl now > /dev/null
 ```
 
-By default, the timezone in the container will be UTC. To configure a different 
-timezone in your container, set the environment variable `TZ` to your timezone, 
+By default, the timezone in the container will be UTC. To configure a different
+timezone in your container, set the environment variable `TZ` to your timezone,
 adding the following to your command line at the container start:
 
 ```
@@ -53,7 +53,7 @@ be executed during the entrypoint. Add the following volume
 
 ```
 ...
-    --volume /path/to/my/autorun.sh:/usr/local/bin/autorun.sh:ro \
+    --volume /path/to/my/autorun.sh:/usr/local/bin/autorun.sh:ro
 ...
 ```
 
@@ -61,7 +61,7 @@ Analyze old log files
 ---------------------
 
 Awstats only processes lines in log files that are newer than the newest already
-known line.  
+known line.
 Means: You cannot analyze older log files later. Start with oldest ones first.
 You may need to delete already processed data by `rm /var/lib/awstats/*`
 
@@ -125,4 +125,3 @@ for lf in "${LOGFILES[@]}"; do
     docker exec awstats /usr/lib/awstats/cgi-bin/awstats.pl -update -config=my_website -LogFile="$lf"
 done
 ```
-
