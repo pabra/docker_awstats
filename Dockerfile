@@ -1,7 +1,7 @@
-FROM httpd:2.4.41-alpine
+FROM httpd:2.4.43-alpine
 
 ENV AWSTATS_VERSION 7.7-r0
-ENV TZDATA_VERSION 2019c-r0
+ENV TZDATA_VERSION 2020a-r0
 ENV MOD_PERL_VERSION 2.0.11
 
 RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata=${TZDATA_VERSION} \
