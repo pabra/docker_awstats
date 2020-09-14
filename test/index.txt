@@ -1,0 +1,12 @@
+   FRAME: [1]mainleft
+   FRAME: [2]mainright
+
+   Your browser does not support frames.
+   You must set AWStats UseFramesWhenCGI parameter to 0 to see your
+   reports.
+
+References
+not there
+
+   1. http://awstats/awstats.pl?framename=mainleft
+   2. http://awstats/awstats.pl?framename=mainright

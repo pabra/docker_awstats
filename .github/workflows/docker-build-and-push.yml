@@ -60,7 +60,7 @@ jobs:
       - name: Build awstats-test
         uses: docker/build-push-action@v2
         with:
-          file: Dockerfile.test
+          context: ./test
           outputs: type=docker
           tags: pabra/awstats-test:latest
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -69,22 +69,12 @@ jobs:
       - name: docker images after
         run: docker image ls
 
-      - name: start awstats
-        run: docker-compose -f docker-compose.test.yml up -d
+      - name: run tests
+        run: |
+          docker-compose -f test/docker-compose.yml awstats-test wait-for-it.sh awstats:80 -t 10 -- test.sh
+          docker-compose -f test/docker-compose.yml down
 
       - name: echo running containers 1
-        run: docker ps -a
-
-      - name: test awstats
-        run: |
-          sleep 3
-          wget -q --spider "http://localhost:3000"
-          wget -q --spider "http://localhost:3000/awstats.pl?framename=mainrig"
-
-      - name: stop awstats
-        run: docker-compose -f docker-compose.test.yml down
-
-      - name: echo running containers 2
         run: docker ps -a
 
       # - name: Login to DockerHub

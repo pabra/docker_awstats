@@ -1,10 +1,13 @@
 version: "3"
 services:
   awstats:
+    build:
+      context: ..
+      dockerfile: Dockerfile
     image: pabra/awstats:test
     container_name: awstats
     ports:
-      - "3000:80"
+      - "0.0.0.0:3000:80/tcp"
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:80"]
       interval: 5s
@@ -16,9 +19,10 @@ services:
   awstats-test:
     build:
       context: .
-      dockerfile: Dockerfile.test
-    image: pabra/wstats-test:latest
+      dockerfile: Dockerfile
+    image: pabra/awstats-test:latest
     container_name: awstats-test
+    command: ["echo", "CMD done"]
     depends_on:
       - awstats
     networks:
