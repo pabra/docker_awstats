@@ -72,7 +72,7 @@ jobs:
 
       - name: run tests
         run: |
-          docker-compose -f test/docker-compose.yml awstats-test wait-for-it.sh awstats:80 -t 10 -- test.sh
+          docker-compose -f test/docker-compose.yml run awstats-test wait-for-it.sh awstats:80 -t 10 -- test.sh
           docker-compose -f test/docker-compose.yml down
 
       - name: echo running containers 1
