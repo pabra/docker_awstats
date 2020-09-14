@@ -61,6 +61,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./test
+          file: ./test/Dockerfile
           outputs: type=docker
           tags: pabra/awstats-test:latest
           cache-from: type=local,src=/tmp/.buildx-cache
