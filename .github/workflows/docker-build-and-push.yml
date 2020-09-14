@@ -2,10 +2,6 @@ name: docker-build-and-push
 
 on:
   push:
-    branches:
-      - master
-    tags:
-      - "v*.*.*"
     paths-ignore:
       - "**.md"
   pull_request:
@@ -50,21 +46,35 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Login to DockerHub
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: docker images before
+        run: docker image ls
 
-      - name: Build and push
-        id: docker_build
+      - name: Build for testing
+        id: docker_build_test
         uses: docker/build-push-action@v2
         with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/386
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.prep.outputs.tags }}
+          outputs: type=image,name=awstats-test,push=false
+          tags: pabra/awstats-test:edge
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: docker images after
+        run: docker image ls
+
+      # - name: Login to DockerHub
+      #   if: github.event_name != 'pull_request'
+      #   uses: docker/login-action@v1
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+      #
+      # - name: Build and push
+      #   if:  github.event_name != 'pull_request'
+      #   id: docker_build
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     platforms: linux/amd64,linux/arm64,linux/386
+      #     push: true
+      #     tags: ${{ steps.prep.outputs.tags }}
+      #     cache-from: type=local,src=/tmp/.buildx-cache
+      #     cache-to: type=local,dest=/tmp/.buildx-cache
