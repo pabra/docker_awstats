@@ -1,0 +1,12 @@
+version: "3"
+services:
+  awstats:
+    container_name: awstats
+    image: pabra/awstats-test
+    ports:
+      - "3000:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:80"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
