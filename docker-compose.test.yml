@@ -1,8 +1,8 @@
 version: "3"
 services:
   awstats:
+    image: pabra/awstats:test
     container_name: awstats
-    image: pabra/awstats-test
     ports:
       - "3000:80"
     healthcheck:
@@ -10,3 +10,20 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    networks:
+      - awstats-net
+
+  awstats-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    image: pabra/wstats-test:latest
+    container_name: awstats-test
+    depends_on:
+      - awstats
+    networks:
+      - awstats-net
+
+networks:
+  awstats-net:
+    name: awstats

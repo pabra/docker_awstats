@@ -49,10 +49,18 @@ jobs:
       - name: docker images before
         run: docker image ls
 
-      - name: Build for testing
-        id: docker_build_test
+      - name: Build awstats for testing
         uses: docker/build-push-action@v2
         with:
+          outputs: type=docker
+          tags: pabra/awstats:test
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: Build awstats-test
+        uses: docker/build-push-action@v2
+        with:
+          file: Dockerfile.test
           outputs: type=docker
           tags: pabra/awstats-test:latest
           cache-from: type=local,src=/tmp/.buildx-cache
