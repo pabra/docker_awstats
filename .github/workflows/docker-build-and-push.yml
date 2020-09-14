@@ -70,8 +70,8 @@ jobs:
       - name: test awstats
         run: |
           sleep 3
-          wget -q --spider "http://localhost:80"
-          wget -q --spider "http://localhost:80/awstats.pl?framename=mainrig"
+          wget -q --spider "http://localhost:3000"
+          wget -q --spider "http://localhost:3000/awstats.pl?framename=mainrig"
 
       - name: stop awstats
         run: docker-compose -f docker-compose.test.yml down
