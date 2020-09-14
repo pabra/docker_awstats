@@ -6,7 +6,6 @@
    reports.
 
 References
-not there
 
    1. http://awstats/awstats.pl?framename=mainleft
    2. http://awstats/awstats.pl?framename=mainright
