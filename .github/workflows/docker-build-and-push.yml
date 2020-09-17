@@ -33,6 +33,9 @@ jobs:
           elif [ "${BRANCH}" = '7.7' ]; then
             TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}"
             TAGS="${TAGS},${DOCKER_IMAGE}:latest"
+          elif [ "${BRANCH}" = 'actions' ]; then
+            TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}"
+            TAGS="${TAGS},${DOCKER_IMAGE}:edge"
           else
             TAGS=''
           fi
