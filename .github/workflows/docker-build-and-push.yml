@@ -71,7 +71,7 @@ jobs:
         run: docker image ls
 
       - name: run tests
-        run: ./run_tests.sh
+        run: ./run_tests.sh skip_build
 
       - name: echo running containers 1
         run: docker ps -a
