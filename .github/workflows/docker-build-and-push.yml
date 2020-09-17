@@ -35,20 +35,10 @@ jobs:
             TAGS="${TAGS},${DOCKER_IMAGE}:latest"
           elif [ "${BRANCH}" = 'actions' ]; then
             TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}"
-            TAGS="${TAGS},${DOCKER_IMAGE}:edge"
           else
             TAGS=''
           fi
           echo ::set-output name=tags::${TAGS}
-
-      - name: debug tags
-        run: |
-          set -ex
-          echo "TAGS: '${{ steps.prep.outputs.tags }}'"
-          git branch --show-current
-          git rev-list --count actions
-          # git rev-list --count $( git branch --show-current ) ^master
-          git rev-list --count $( git branch --show-current )
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -64,18 +54,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: debug cache
-        run: |
-          set -ex
-          ls -lahF /tmp/.buildx-cache
-
       - name: docker images before
         run: docker image ls
 
       - name: Build awstats for testing
         uses: docker/build-push-action@v2
         with:
-          # outputs: type=docker
           load: true
           tags: pabra/awstats:test
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -86,20 +70,13 @@ jobs:
         with:
           context: ./test
           file: ./test/Dockerfile
-          # outputs: type=docker
           load: true
           tags: pabra/awstats-test:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
-      - name: docker images after
-        run: docker image ls
-
       - name: run tests
         run: ./run_tests.sh skip_build
-
-      - name: echo running containers 1
-        run: docker ps -a
 
       - name: Login to DockerHub
         if: github.event_name != 'pull_request' && steps.prep.outputs.tags != ''
@@ -118,8 +95,3 @@ jobs:
           tags: ${{ steps.prep.outputs.tags }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
-
-      - name: debug cache
-        run: |
-          set -ex
-          ls -lahF /tmp/.buildx-cache
