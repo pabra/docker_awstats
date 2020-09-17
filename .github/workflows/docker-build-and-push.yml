@@ -71,9 +71,7 @@ jobs:
         run: docker image ls
 
       - name: run tests
-        run: |
-          docker-compose -f test/docker-compose.yml run awstats-test wait-for-it.sh awstats:80 -t 10 -- test.sh
-          docker-compose -f test/docker-compose.yml down
+        run: ./run_tests.sh
 
       - name: echo running containers 1
         run: docker ps -a

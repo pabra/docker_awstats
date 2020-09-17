@@ -15,6 +15,15 @@ services:
       retries: 5
     networks:
       - awstats-net
+    volumes:
+      - type: volume
+        source: awstats-vol
+        target: /var/lib/awstats
+
+      - type: volume
+        source: logs-vol
+        target: /var/local/log
+        read_only: true
 
   awstats-test:
     build:
@@ -27,7 +36,23 @@ services:
       - awstats
     networks:
       - awstats-net
+    volumes:
+      - type: volume
+        source: awstats-vol
+        target: /var/lib/awstats
+        read_only: true
+
+      - type: volume
+        source: logs-vol
+        target: /var/local/log
 
 networks:
   awstats-net:
     name: awstats
+
+volumes:
+  awstats-vol:
+    name: awstats
+
+  logs-vol:
+    name: logs

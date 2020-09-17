@@ -12,5 +12,6 @@ RUN wget -O ${WAITFORIT_PATH} "https://raw.githubusercontent.com/vishnubob/wait-
 
 WORKDIR /test
 
-COPY test.sh /usr/local/bin/
-COPY index.txt ./
+COPY test*.sh /usr/local/bin/
+COPY html.*.txt ./
+COPY access.log ./
