@@ -37,6 +37,7 @@ jobs:
           set -ex
           echo ${{ steps.prep.outputs.tags }}
           git branch --show-current
+          git rev-list --count actions
           git rev-list --count $( git branch --show-current ) ^master
 
       - name: Set up QEMU
