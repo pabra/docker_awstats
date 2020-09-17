@@ -40,7 +40,6 @@ services:
       - type: volume
         source: awstats-vol
         target: /var/lib/awstats
-        read_only: true
 
       - type: volume
         source: logs-vol
