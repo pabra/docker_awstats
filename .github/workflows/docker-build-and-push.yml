@@ -40,7 +40,8 @@ jobs:
           echo ${{ steps.prep.outputs.tags }}
           git branch --show-current
           git rev-list --count actions
-          git rev-list --count $( git branch --show-current ) ^master
+          # git rev-list --count $( git branch --show-current ) ^master
+          git rev-list --count $( git branch --show-current )
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
