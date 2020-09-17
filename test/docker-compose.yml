@@ -6,13 +6,6 @@ services:
       dockerfile: Dockerfile
     image: pabra/awstats:test
     container_name: awstats
-    ports:
-      - "0.0.0.0:3000:80/tcp"
-    healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:80"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
     networks:
       - awstats-net
     volumes:
