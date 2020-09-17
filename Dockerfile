@@ -1,4 +1,4 @@
-FROM httpd:2.4.41-alpine
+FROM httpd:2.4.46-alpine
 
 ENV AWSTATS_VERSION 7.7-r0
 ENV TZDATA_VERSION 2020a-r0
