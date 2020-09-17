@@ -32,6 +32,11 @@ jobs:
           fi
           echo ::set-output name=tags::${TAGS}
 
+      - name: debug tags
+        run: |
+          set -ex
+          echo ${{ steps.prep.outputs.tags }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
