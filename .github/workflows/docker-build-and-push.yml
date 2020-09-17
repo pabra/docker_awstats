@@ -36,6 +36,8 @@ jobs:
         run: |
           set -ex
           echo ${{ steps.prep.outputs.tags }}
+          git branch --show-current
+          git rev-list --count $( git branch --show-current ) ^master
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -57,7 +59,8 @@ jobs:
       - name: Build awstats for testing
         uses: docker/build-push-action@v2
         with:
-          outputs: type=docker
+          # outputs: type=docker
+          load: true
           tags: pabra/awstats:test
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -67,7 +70,8 @@ jobs:
         with:
           context: ./test
           file: ./test/Dockerfile
-          outputs: type=docker
+          # outputs: type=docker
+          load: true
           tags: pabra/awstats-test:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
