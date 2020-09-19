@@ -7,6 +7,13 @@ that way, so you can easily put a reverse proxy (like Nginx) in front.
 Read all about [awstats config](http://www.awstats.org/docs/awstats_config.html)
 
 
+Supported tags and respective `Dockerfile` links
+------------------------------------------------
+
+* [`7.7-xx-sha`, `7.7`, `latest`](https://github.com/pabra/docker_awstats/blob/7.7/Dockerfile)
+* [`master-xx-sha`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
+
+
 Quickstart
 ----------
 
