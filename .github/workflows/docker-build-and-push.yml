@@ -60,7 +60,7 @@ jobs:
 
       - name: Prepare
         id: prep
-        # if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request'
         run: |
           set -ex
           DOCKER_IMAGE=pabra/awstats
