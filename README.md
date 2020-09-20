@@ -1,3 +1,5 @@
+[![docker-build-and-push](https://github.com/pabra/docker_awstats/workflows/docker-build-and-push/badge.svg?branch=7.8)](https://github.com/pabra/docker_awstats/actions?query=workflow%3Adocker-build-and-push+branch%3A7.8)
+
 README
 ======
 
