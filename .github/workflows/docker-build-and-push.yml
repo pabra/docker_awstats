@@ -76,10 +76,13 @@ jobs:
             if [ "${BRANCH}" = 'master' ]; then
               TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}-${SHORT_SHA}"
               TAGS="${TAGS},${DOCKER_IMAGE}:edge"
-            elif [ "${BRANCH}" = '7.7' ]; then
+            elif [ "${BRANCH}" = '7.8' ]; then
               TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}-${SHORT_SHA}"
               TAGS="${TAGS},${DOCKER_IMAGE}:${BRANCH}"
               TAGS="${TAGS},${DOCKER_IMAGE}:latest"
+            elif [ "${BRANCH}" = '7.7' ]; then
+              TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}-${SHORT_SHA}"
+              TAGS="${TAGS},${DOCKER_IMAGE}:${BRANCH}"
             elif [ "${BRANCH}" = 'actions' ]; then
               TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}-${SHORT_SHA}"
             else
