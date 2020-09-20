@@ -1,7 +1,7 @@
 
 
    Last Update:     17 Sep 2020 - 05:25 [1]Awstats Web Site
-   Reported period: [Feb_____] [2020] OK
+   Reported period: [Monthly] [Feb_____] [2020] OK
 
    Summary
    Reported period Month Feb 2020
@@ -310,28 +310,28 @@
 
    * Codes shown here gave hits or traffic "not viewed" by visitors, so
    they are not included in other charts.
-   Advanced Web Statistics 7.7 (build 20180105) - [21]Created by awstats
+   Advanced Web Statistics 7.8 (build 20200416) - [21]Created by awstats
 
 References
 
    1. http://www.awstats.org/
-   2. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=alldomains
-   3. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=allhosts
-   4. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=lasthosts
-   5. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=unknownip
-   6. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=allrobots
-   7. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=lastrobots
-   8. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=downloads
-   9. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=urldetail
-  10. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=urlentry
-  11. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=urlexit
+   2. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=alldomains
+   3. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=allhosts
+   4. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=lasthosts
+   5. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=unknownip
+   6. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=allrobots
+   7. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=lastrobots
+   8. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=downloads
+   9. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=urldetail
+  10. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=urlentry
+  11. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=urlexit
   12. http://my_website/
-  13. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=osdetail
-  14. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=unknownos
-  15. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=browserdetail
-  16. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=unknownbrowser
-  17. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=refererse
-  18. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=refererpages
-  19. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=keyphrases
-  20. http://awstats/awstats.pl?month=02&year=2020&framename=mainright&output=keywords
+  13. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=osdetail
+  14. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=unknownos
+  15. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=browserdetail
+  16. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=unknownbrowser
+  17. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=refererse
+  18. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=refererpages
+  19. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=keyphrases
+  20. http://awstats/awstats.pl?databasebreak=month&month=02&year=2020&framename=mainright&output=keywords
   21. http://www.awstats.org/
