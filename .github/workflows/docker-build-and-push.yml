@@ -79,6 +79,7 @@ jobs:
             elif [ "${BRANCH}" = '7.8' ]; then
               TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}-${SHORT_SHA}"
               TAGS="${TAGS},${DOCKER_IMAGE}:${BRANCH}"
+              TAGS="${TAGS},${DOCKER_IMAGE}:latest"
             elif [ "${BRANCH}" = '7.7' ]; then
               TAGS="${DOCKER_IMAGE}:${BRANCH}-${COMMITS}-${SHORT_SHA}"
               TAGS="${TAGS},${DOCKER_IMAGE}:${BRANCH}"
