@@ -19,7 +19,7 @@ RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata=${TZDATA_VERSIO
     && echo 'Include conf/awstats_httpd.conf' >> /usr/local/apache2/conf/httpd.conf \
     && cd .. \
     && rm -rf ./mod_perl-${MOD_PERL_VERSION}* \
-    && apk del .build-dependencies
+    && apk del --no-cache .build-dependencies
 
 COPY awstats_env.conf /etc/awstats/
 COPY awstats_httpd.conf /usr/local/apache2/conf/
@@ -36,7 +36,7 @@ COPY 01-mime.pm.patch /tmp/
 RUN apk add --no-cache --virtual .patch patch \
     && patch -p1 /usr/lib/awstats/cgi-bin/lib/mime.pm < /tmp/01-mime.pm.patch \
     && unlink /tmp/01-mime.pm.patch \
-    && apk del .patch
+    && apk del --no-cache .patch
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["httpd-foreground"]
