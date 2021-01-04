@@ -19,7 +19,7 @@ RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata=${TZDATA_VERSIO
     && echo 'Include conf/awstats_httpd.conf' >> /usr/local/apache2/conf/httpd.conf \
     && cd .. \
     && rm -rf ./mod_perl-${MOD_PERL_VERSION}* \
-    && apk del .build-dependencies
+    && apk del --no-cache .build-dependencies
 
 ADD awstats_env.conf /etc/awstats/
 ADD awstats_httpd.conf /usr/local/apache2/conf/
