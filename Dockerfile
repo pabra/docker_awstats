@@ -1,9 +1,9 @@
 FROM httpd:2.4.46-alpine
 
-ENV AWSTATS_VERSION 7.8-r0
-ENV TZDATA_VERSION 2020f-r0
-ENV MOD_PERL_VERSION 2.0.11
-ENV MOD_PERL_SHA ca2a9e18cdf90f9c6023e786369d5ba75e8dac292ebfea9900c29bf42dc16f74
+ARG AWSTATS_VERSION=7.8-r0 \
+    TZDATA_VERSION=2020f-r0 \
+    MOD_PERL_VERSION=2.0.11 \
+    MOD_PERL_SHA=ca2a9e18cdf90f9c6023e786369d5ba75e8dac292ebfea9900c29bf42dc16f74
 
 RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata=${TZDATA_VERSION} \
     && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget perl-dev \
@@ -25,11 +25,11 @@ COPY awstats_env.conf /etc/awstats/
 COPY awstats_httpd.conf /usr/local/apache2/conf/
 COPY entrypoint.sh /usr/local/bin/
 
-ENV AWSTATS_CONF_LOGFILE "/var/local/log/access.log"
-ENV AWSTATS_CONF_LOGFORMAT "%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot"
-ENV AWSTATS_CONF_SITEDOMAIN "my_website"
-ENV AWSTATS_CONF_HOSTALIASES "localhost 127.0.0.1 REGEX[^.*$]"
-ENV AWSTATS_CONF_INCLUDE "."
+ENV AWSTATS_CONF_LOGFILE="/var/local/log/access.log" \
+    AWSTATS_CONF_LOGFORMAT="%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot" \
+    AWSTATS_CONF_SITEDOMAIN="my_website" \
+    AWSTATS_CONF_HOSTALIASES="localhost 127.0.0.1 REGEX[^.*$]" \
+    AWSTATS_CONF_INCLUDE="."
 
 # patch broken /usr/lib/awstats/cgi-bin/lib/mime.pm
 COPY 01-mime.pm.patch /tmp/
