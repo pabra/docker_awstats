@@ -1,7 +1,11 @@
 #!/bin/sh
 
-[ -x /usr/local/bin/autorun.sh ] && . /usr/local/bin/autorun.sh
+set -e
 
-envsubst < /etc/awstats/awstats_env.conf > /etc/awstats/awstats.conf
+if [ -x /usr/local/bin/autorun.sh ]; then
+    . /usr/local/bin/autorun.sh
+fi
+
+envsubst </etc/awstats/awstats_env.conf >/etc/awstats/awstats.conf
 
 exec "$@"
