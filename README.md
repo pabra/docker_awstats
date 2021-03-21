@@ -1,24 +1,19 @@
-[![docker-build-and-push](https://github.com/pabra/docker_awstats/workflows/docker-build-and-push/badge.svg?branch=7.8)](https://github.com/pabra/docker_awstats/actions?query=workflow%3Adocker-build-and-push+branch%3A7.8)
+[![docker-build-and-push](https://github.com/pabra/docker_awstats/workflows/docker-build-and-push/badge.svg?branch=master)](https://github.com/pabra/docker_awstats/actions?query=workflow%3Adocker-build-and-push+branch%3Amaster)
 
-README
-======
+# README
 
 Awstats container based on `httpd:2.4-alpine` to keep it small. It's configures
 that way, so you can easily put a reverse proxy (like Nginx) in front.
 
 Read all about [awstats config](http://www.awstats.org/docs/awstats_config.html)
 
+## Supported tags and respective `Dockerfile` links
 
-Supported tags and respective `Dockerfile` links
-------------------------------------------------
+-   [`7.8-76-96d61b7`, `7.8`, `latest`](https://github.com/pabra/docker_awstats/blob/7.8/Dockerfile)
+-   [`7.7-67-bd55495`, `7.7`](https://github.com/pabra/docker_awstats/blob/7.7/Dockerfile)
+-   [`master-70-4d80916`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
 
-* [`7.8-xx-sha`, `7.8`, `latest`](https://github.com/pabra/docker_awstats/blob/7.8/Dockerfile)
-* [`7.7-xx-sha`, `7.7`](https://github.com/pabra/docker_awstats/blob/7.7/Dockerfile)
-* [`master-xx-sha`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
-
-
-Quickstart
-----------
+## Quickstart
 
 ```bash
 # start the container
@@ -38,6 +33,7 @@ docker exec awstats awstats_updateall.pl now
 Now point your browser to [http://my_website:3000/]().
 
 Add this line to your `/etc/crontab` to let Awstats analyze your logs every 10 minutes:
+
 ```
 */10 * * * * root docker exec awstats awstats_updateall.pl now > /dev/null
 ```
@@ -50,12 +46,9 @@ adding the following to your command line at the container start:
     --env TZ="Antarctica/South_Pole"
 ```
 
+# Advanced
 
-Advanced
-========
-
-Run extra commands on the entrypoint
-------------------------------------
+## Run extra commands on the entrypoint
 
 If you need to execute some command before httpd starts (i.e. a cron daemon inside
 the container), you can bind-mount a file `/usr/local/bin/autorun.sh` that will
@@ -67,8 +60,7 @@ be executed during the entrypoint. Add the following volume
 ...
 ```
 
-Analyze old log files
----------------------
+## Analyze old log files
 
 Awstats only processes lines in log files that are newer than the newest already
 known line.
