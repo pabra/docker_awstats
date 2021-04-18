@@ -31,12 +31,5 @@ ENV AWSTATS_CONF_SITEDOMAIN="my_website"
 ENV AWSTATS_CONF_HOSTALIASES="localhost 127.0.0.1 REGEX[^.*$]"
 ENV AWSTATS_CONF_INCLUDE="."
 
-# patch broken /usr/lib/awstats/cgi-bin/lib/mime.pm
-COPY 01-mime.pm.patch /tmp/
-RUN apk add --no-cache --virtual .patch patch \
-    && patch -p1 /usr/lib/awstats/cgi-bin/lib/mime.pm < /tmp/01-mime.pm.patch \
-    && unlink /tmp/01-mime.pm.patch \
-    && apk del --no-cache .patch
-
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["httpd-foreground"]
