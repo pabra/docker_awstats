@@ -1,4 +1,4 @@
-FROM httpd:2.4.47-alpine
+FROM httpd:2.4.48-alpine
 
 ARG AWSTATS_VERSION=7.8-r1
 ARG TZDATA_VERSION=2021a-r0
