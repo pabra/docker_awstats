@@ -11,7 +11,7 @@ Read all about [awstats config](http://www.awstats.org/docs/awstats_config.html)
 
 -   [`7.8-83-0e7d905`, `7.8`, `latest`](https://github.com/pabra/docker_awstats/blob/7.8/Dockerfile)
 -   [`7.7-67-bd55495`, `7.7`](https://github.com/pabra/docker_awstats/blob/7.7/Dockerfile)
--   [`master-76-a957419`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
+-   [`master-79-0f9af57`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
 
 ## Quickstart
 
