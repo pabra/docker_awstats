@@ -37,7 +37,6 @@ jobs:
           load: true
           tags: pabra/awstats:test
           cache-from: type=registry,ref=pabra/awstats:buildcache
-          cache-to: type=registry,ref=pabra/awstats:buildcache,mode=max
 
       - name: Build awstats-test
         uses: docker/build-push-action@v2
