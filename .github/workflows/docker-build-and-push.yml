@@ -49,6 +49,14 @@ jobs:
       - name: run tests
         run: ./run_tests.sh skip_build
 
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: pabra/awstats
+          labels: |
+            org.opencontainers.image.authors=Patrick Braune<pabra@netzfruech.de>
+
       - name: Prepare
         id: prep
         if: github.event_name != 'pull_request'
@@ -103,5 +111,6 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/386
           push: true
           tags: ${{ steps.prep.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=pabra/awstats:buildcache
           cache-to: type=registry,ref=pabra/awstats:buildcache,mode=max
