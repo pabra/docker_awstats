@@ -19,7 +19,7 @@ if [ "$1" != 'skip_build' ]; then
 fi
 
 docker-compose -f test/docker-compose.yml up -d
-docker-compose -f test/docker-compose.yml run ${no_tty} awstats-test wait-for-it.sh awstats:80 -t 10 -- test1.sh
+docker-compose -f test/docker-compose.yml run ${no_tty} awstats-test /bin/sh -c 'wait4ports -t 10 tcp://awstats:80 && test1.sh'
 docker-compose -f test/docker-compose.yml exec ${no_tty} awstats awstats_updateall.pl now
 docker-compose -f test/docker-compose.yml run ${no_tty} awstats-test test2.sh
 docker-compose -f test/docker-compose.yml exec ${no_tty} awstats awstats_updateall.pl now

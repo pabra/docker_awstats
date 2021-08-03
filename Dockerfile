@@ -1,12 +1,10 @@
-FROM httpd:2.4.41-alpine
+FROM httpd:2.4.48-alpine
 
-ARG AWSTATS_VERSION=7.7-r0
-ARG TZDATA_VERSION=2021a-r0
 ARG MOD_PERL_VERSION=2.0.11
 ARG MOD_PERL_SHA=ca2a9e18cdf90f9c6023e786369d5ba75e8dac292ebfea9900c29bf42dc16f74
 
-RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata=${TZDATA_VERSION} \
-    && apk add --no-cache --virtual .build-dependencies gcc libc-dev make wget perl-dev \
+RUN apk add --no-cache gettext \
+    && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget perl-dev \
     && cd /tmp \
     && wget https://www-eu.apache.org/dist/perl/mod_perl-${MOD_PERL_VERSION}.tar.gz \
     && echo "${MOD_PERL_SHA}  mod_perl-${MOD_PERL_VERSION}.tar.gz" | sha256sum -c \
@@ -21,9 +19,15 @@ RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata=${TZDATA_VERSIO
     && rm -rf ./mod_perl-${MOD_PERL_VERSION}* \
     && apk del --no-cache .build-dependencies
 
-ADD awstats_env.conf /etc/awstats/
-ADD awstats_httpd.conf /usr/local/apache2/conf/
-ADD entrypoint.sh /usr/local/bin/
+ARG TZDATA_VERSION=2021a-r0
+ARG AWSTATS_VERSION=7.7-r0
+
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.9/main' >> /etc/apk/repositories \
+    && apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION}
+
+COPY awstats_env.conf /etc/awstats/
+COPY awstats_httpd.conf /usr/local/apache2/conf/
+COPY entrypoint.sh /usr/local/bin/
 
 ENV AWSTATS_CONF_LOGFILE="/var/local/log/access.log"
 ENV AWSTATS_CONF_LOGFORMAT="%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot"

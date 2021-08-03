@@ -1,4 +1,7 @@
-[![docker-build-and-push](https://github.com/pabra/docker_awstats/workflows/docker-build-and-push/badge.svg?branch=7.7)](https://github.com/pabra/docker_awstats/actions?query=workflow%3Adocker-build-and-push+branch%3A7.7)
+[![Docker Image Version](https://img.shields.io/docker/v/pabra/awstats/7.7?logo=docker&sort=semver)](https://hub.docker.com/r/pabra/awstats)
+[![Docker Pulls](https://img.shields.io/docker/pulls/pabra/awstats?label=pulls&logo=docker)](https://hub.docker.com/r/pabra/awstats)
+[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pabra/awstats/7.8?label=size&logo=docker)](https://hub.docker.com/r/pabra/awstats)
+[![docker-build-and-push](https://github.com/pabra/docker_awstats/workflows/docker-build-and-push/badge.svg?branch=master)](https://github.com/pabra/docker_awstats/actions?query=workflow%3Adocker-build-and-push+branch%3Amaster)
 
 # README
 
