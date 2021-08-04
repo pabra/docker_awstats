@@ -1,11 +1,9 @@
 FROM httpd:2.4.48-alpine
 
-ARG AWSTATS_VERSION=7.8-r1
-ARG TZDATA_VERSION=2021a-r0
 ARG MOD_PERL_VERSION=2.0.11
 ARG MOD_PERL_SHA=ca2a9e18cdf90f9c6023e786369d5ba75e8dac292ebfea9900c29bf42dc16f74
 
-RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata=${TZDATA_VERSION} \
+RUN apk add --no-cache gettext \
     && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget perl-dev \
     && cd /tmp \
     && wget https://www-eu.apache.org/dist/perl/mod_perl-${MOD_PERL_VERSION}.tar.gz \
@@ -20,6 +18,11 @@ RUN apk add --no-cache awstats=${AWSTATS_VERSION} gettext tzdata=${TZDATA_VERSIO
     && cd .. \
     && rm -rf ./mod_perl-${MOD_PERL_VERSION}* \
     && apk del --no-cache .build-dependencies
+
+ARG TZDATA_VERSION=2021a-r0
+ARG AWSTATS_VERSION=7.8-r1
+
+RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION}
 
 COPY awstats_env.conf /etc/awstats/
 COPY awstats_httpd.conf /usr/local/apache2/conf/
