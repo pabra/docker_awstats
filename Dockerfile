@@ -1,15 +1,20 @@
-FROM httpd:2.4.51-alpine
+FROM httpd:2.4.52-alpine
 
 ARG MOD_PERL_VERSION=2.0.11
 ARG MOD_PERL_SHA=ca2a9e18cdf90f9c6023e786369d5ba75e8dac292ebfea9900c29bf42dc16f74
 
+# Workaround to support Perl 5.33.7++ - should be fixed upstream soon
+# See https://github.com/Perl/perl5/issues/18617
+COPY perl-5-33-7.patch /tmp/
+
 RUN apk add --no-cache gettext \
-    && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget perl-dev \
+    && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget perl-dev patch \
     && cd /tmp \
     && wget https://www-eu.apache.org/dist/perl/mod_perl-${MOD_PERL_VERSION}.tar.gz \
     && echo "${MOD_PERL_SHA}  mod_perl-${MOD_PERL_VERSION}.tar.gz" | sha256sum -c \
     && tar xf mod_perl-${MOD_PERL_VERSION}.tar.gz \
     && cd mod_perl-${MOD_PERL_VERSION} \
+    && patch --forward --strip=0 --input=/tmp/perl-5-33-7.patch \
     && perl Makefile.PL MP_APXS=/usr/local/apache2/bin/apxs MP_APR_CONFIG=/usr/bin/apr-1-config --cflags --cppflags --includes \
     && make -j4 \
     && mv src/modules/perl/mod_perl.so /usr/local/apache2/modules/ \
@@ -19,7 +24,7 @@ RUN apk add --no-cache gettext \
     && rm -rf ./mod_perl-${MOD_PERL_VERSION}* \
     && apk del --no-cache .build-dependencies
 
-ARG TZDATA_VERSION=2021c-r0
+ARG TZDATA_VERSION=2021e-r0
 ARG AWSTATS_VERSION=7.8-r1
 
 RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION}
