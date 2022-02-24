@@ -1,7 +1,7 @@
 FROM httpd:2.4.52-alpine
 
-ARG MOD_PERL_VERSION=2.0.11
-ARG MOD_PERL_SHA=ca2a9e18cdf90f9c6023e786369d5ba75e8dac292ebfea9900c29bf42dc16f74
+ARG MOD_PERL_VERSION=2.0.12
+ARG MOD_PERL_SHA=f5b821b59b0fdc9670e46ed0fcf32d8911f25126189a8b68c1652f9221eee269
 
 # Workaround to support Perl 5.33.7++ - should be fixed upstream soon
 # See https://github.com/Perl/perl5/issues/18617
