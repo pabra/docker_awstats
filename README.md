@@ -12,9 +12,9 @@ Read all about [awstats config](http://www.awstats.org/docs/awstats_config.html)
 
 ## Supported tags and respective `Dockerfile` links
 
--   [`7.8-98-88a0038`, `7.8`, `latest`](https://github.com/pabra/docker_awstats/blob/7.8/Dockerfile)
+-   [`7.8-105-6a08199`, `7.8`, `latest`](https://github.com/pabra/docker_awstats/blob/7.8/Dockerfile)
 -   [`7.7-73-79a6726`, `7.7`](https://github.com/pabra/docker_awstats/blob/7.7/Dockerfile)
--   [`master-98-fa663ca`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
+-   [`master-106-d4355b9`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
 
 ## Quickstart
 
