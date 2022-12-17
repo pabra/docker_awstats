@@ -20,7 +20,7 @@ RUN apk add --no-cache gettext \
     && apk del --no-cache .build-dependencies
 
 ARG TZDATA_VERSION=2022f-r1
-ARG AWSTATS_VERSION=7.8-r1
+ARG AWSTATS_VERSION=7.8-r2
 
 RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION}
 
