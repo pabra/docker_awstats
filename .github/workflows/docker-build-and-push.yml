@@ -32,14 +32,14 @@ jobs:
         run: docker image ls
 
       - name: Build awstats for testing
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           load: true
           tags: pabra/awstats:test
           cache-from: type=registry,ref=pabra/awstats:buildcache
 
       - name: Build awstats-test
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: ./test
           file: ./test/Dockerfile
@@ -106,7 +106,7 @@ jobs:
       - name: Build and push
         if: github.event_name != 'pull_request' && steps.prep.outputs.tags
         id: docker_build
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/386
           push: true
