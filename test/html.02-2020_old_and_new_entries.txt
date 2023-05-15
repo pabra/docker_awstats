@@ -1,7 +1,7 @@
 
 
    Last Update:     17 Sep 2020 - 10:33 [1]Awstats Web Site
-   Reported period: [Monthly] [Feb_____] [2020] OK
+   Reported period: [Month] [Feb_____] [2020] OK
 
    Summary
    Reported period Month Feb 2020
@@ -311,7 +311,7 @@
 
    * Codes shown here gave hits or traffic "not viewed" by visitors, so
    they are not included in other charts.
-   Advanced Web Statistics 7.8 (build 20200416) - [21]Created by awstats
+   Advanced Web Statistics 7.9 (build 20230108) - [21]Created by awstats
 
 References
 
