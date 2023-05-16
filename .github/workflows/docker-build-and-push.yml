@@ -69,7 +69,7 @@ jobs:
           SUBJECT="$( git show --no-patch --format=%s ${GITHUB_SHA} )"
 
           if [[ "${SUBJECT}" != publish:* ]]; then
-            echo ::set-output name=tags::${TAGS}
+            echo "tags=${TAGS}" >> $GITHUB_OUTPUT
           else
 
             if [ "${BRANCH}" = 'master' ]; then
@@ -90,7 +90,7 @@ jobs:
             else
               TAGS=''
             fi
-            echo ::set-output name=tags::${TAGS}
+            echo "tags=${TAGS}" >> $GITHUB_OUTPUT
 
           fi
 
