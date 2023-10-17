@@ -33,6 +33,7 @@ ENV AWSTATS_CONF_LOGFORMAT="%host %other %logname %time1 %methodurl %code %bytes
 ENV AWSTATS_CONF_SITEDOMAIN="my_website"
 ENV AWSTATS_CONF_HOSTALIASES="localhost 127.0.0.1 REGEX[^.*$]"
 ENV AWSTATS_CONF_INCLUDE="."
+ENV AWSTATS_CONF_ALLOWFULLYEARVIEW=2
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["httpd-foreground"]
