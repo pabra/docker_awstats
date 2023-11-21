@@ -1,4 +1,4 @@
-FROM httpd:2.4.57-alpine
+FROM httpd:2.4.58-alpine
 
 RUN apk add --no-cache lynx diffutils bash wait4ports
 
