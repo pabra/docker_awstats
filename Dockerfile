@@ -1,4 +1,4 @@
-FROM httpd:2.4.57-alpine
+FROM httpd:2.4.58-alpine
 
 ARG MOD_PERL_VERSION=2.0.13
 ARG MOD_PERL_SHA=ade3be31c447b8448869fecdfcace258d6d587b8c6c773c5f22735f70d82d6da
