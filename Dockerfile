@@ -24,10 +24,15 @@ ARG AWSTATS_VERSION=7.9-r0
 
 RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION} \
     && touch /etc/awstats/awstats.conf \
-    && chmod g+w /etc/awstats/awstats.conf
+    && touch /usr/local/apache2/conf/awstats_httpd.conf \
+    && touch /usr/local/apache2/conf/httpd.conf \
+    && chmod g+w /etc/awstats/awstats.conf \
+    && chmod g+w /usr/local/apache2/conf/awstats_httpd.conf \
+    && chmod g+w /usr/local/apache2/conf/httpd.conf \
+    && sed 's/^Listen 80/Listen $HTTPD_PORT/' /usr/local/apache2/conf/httpd.conf > /usr/local/apache2/conf/httpd_env.conf
 
 COPY awstats_env.conf /etc/awstats/
-COPY awstats_httpd.conf /usr/local/apache2/conf/
+COPY awstats_httpd_env.conf /usr/local/apache2/conf/
 COPY entrypoint.sh /usr/local/bin/
 
 ENV AWSTATS_CONF_LOGFILE="/var/local/log/access.log"
@@ -36,6 +41,7 @@ ENV AWSTATS_CONF_SITEDOMAIN="my_website"
 ENV AWSTATS_CONF_HOSTALIASES="localhost 127.0.0.1 REGEX[^.*$]"
 ENV AWSTATS_CONF_INCLUDE="."
 ENV AWSTATS_CONF_ALLOWFULLYEARVIEW=2
+ENV HTTPD_PORT="80"
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["httpd-foreground"]
