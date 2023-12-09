@@ -22,7 +22,9 @@ RUN apk add --no-cache gettext \
 ARG TZDATA_VERSION=2023c-r1
 ARG AWSTATS_VERSION=7.9-r0
 
-RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION}
+RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION} \
+    && touch /etc/awstats/awstats.conf \
+    && chmod g+w /etc/awstats/awstats.conf
 
 COPY awstats_env.conf /etc/awstats/
 COPY awstats_httpd.conf /usr/local/apache2/conf/
