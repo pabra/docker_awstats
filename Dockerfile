@@ -29,6 +29,8 @@ RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION} \
     && chmod g+w /etc/awstats/awstats.conf \
     && chmod g+w /usr/local/apache2/conf/awstats_httpd.conf \
     && chmod g+w /usr/local/apache2/conf/httpd.conf \
+    && chmod -R g+w /usr/local/apache2/logs \
+    && chmod -R g+w /var/lib/awstats \
     && sed 's/^Listen 80/Listen $HTTPD_PORT/' /usr/local/apache2/conf/httpd.conf > /usr/local/apache2/conf/httpd_env.conf
 
 COPY awstats_env.conf /etc/awstats/
