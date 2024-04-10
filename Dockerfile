@@ -1,4 +1,4 @@
-FROM httpd:2.4.58-alpine
+FROM httpd:2.4.59-alpine
 
 ARG MOD_PERL_VERSION=2.0.13
 ARG MOD_PERL_SHA=ade3be31c447b8448869fecdfcace258d6d587b8c6c773c5f22735f70d82d6da
@@ -6,7 +6,7 @@ ARG MOD_PERL_SHA=ade3be31c447b8448869fecdfcace258d6d587b8c6c773c5f22735f70d82d6d
 RUN apk add --no-cache gettext \
     && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget perl-dev \
     && cd /tmp \
-    && wget https://www-eu.apache.org/dist/perl/mod_perl-${MOD_PERL_VERSION}.tar.gz \
+    && wget https://dlcdn.apache.org/perl/mod_perl-${MOD_PERL_VERSION}.tar.gz \
     && echo "${MOD_PERL_SHA}  mod_perl-${MOD_PERL_VERSION}.tar.gz" | sha256sum -c \
     && tar xf mod_perl-${MOD_PERL_VERSION}.tar.gz \
     && cd mod_perl-${MOD_PERL_VERSION} \
@@ -19,7 +19,7 @@ RUN apk add --no-cache gettext \
     && rm -rf ./mod_perl-${MOD_PERL_VERSION}* \
     && apk del --no-cache .build-dependencies
 
-ARG TZDATA_VERSION=2023c-r1
+ARG TZDATA_VERSION=2024a-r0
 ARG AWSTATS_VERSION=7.9-r0
 
 RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION} \
