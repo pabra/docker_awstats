@@ -131,3 +131,14 @@ for lf in "${LOGFILES[@]}"; do
     docker exec awstats /usr/lib/awstats/cgi-bin/awstats.pl -update -config=my_website -LogFile="$lf"
 done
 ```
+
+## Environment variable
+
+`AWSTATS_CONF_SKIP_HOSTS`
+: Set `SkipHosts` (default '')
+
+`AWSTATS_CONF_SKIP_USER_AGENTS`
+: Set `SkipUserAgents` (default '')
+
+`AWSTATS_CONF_SKIP_FILES`
+: Set `SkipFiles` (default '')
