@@ -5,7 +5,7 @@
 
 # README
 
-Awstats container based on `httpd:2.4-alpine` to keep it small. It's configures
+Awstats container based on `httpd:2.4-alpine` to keep it small. It's configured
 that way, so you can easily put a reverse proxy (like Nginx) in front.
 
 Read all about [awstats config](http://www.awstats.org/docs/awstats_config.html)
@@ -132,13 +132,34 @@ for lf in "${LOGFILES[@]}"; do
 done
 ```
 
-## Environment variable
+## Environment variables
 
-`AWSTATS_CONF_SKIP_HOSTS`
-: Set `SkipHosts` (default '')
+-   `HTTPD_PORT`\
+     Set listen port for Apache inside container (default 80)
 
-`AWSTATS_CONF_SKIP_USER_AGENTS`
-: Set `SkipUserAgents` (default '')
+-   `AWSTATS_CONF_SKIP_HOSTS`\
+    Set `SkipHosts` (default '')
 
-`AWSTATS_CONF_SKIP_FILES`
-: Set `SkipFiles` (default '')
+-   `AWSTATS_CONF_SKIP_USER_AGENTS`\
+    Set `SkipUserAgents` (default '')
+
+-   `AWSTATS_CONF_SKIP_FILES`\
+    Set `SkipFiles` (default '')
+
+-   `AWSTATS_CONF_ALLOWFULLYEARVIEW`\
+    Set `AllowFullYearView` (default 2)
+
+-   `AWSTATS_CONF_INCLUDE`\
+    Set `Include` (default '.')
+
+-   `AWSTATS_CONF_HOSTALIASES`\
+    Set `HostAliases` (default 'localhost 127.0.0.1 REGEX[^.*$]')
+
+-   `AWSTATS_CONF_SITEDOMAIN`\
+    Set `SiteDomain` (default 'my_website')
+
+-   `AWSTATS_CONF_LOGFORMAT`\
+    Set `LogFormat` (default '%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot')
+
+-   `AWSTATS_CONF_LOGFILE`\
+    Set `LogFile` (default '/var/local/log/access.log')
