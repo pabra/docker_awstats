@@ -1,4 +1,4 @@
-FROM httpd:2.4.62-alpine
+FROM httpd:2.4.63-alpine
 
 ARG MOD_PERL_VERSION=2.0.13
 ARG MOD_PERL_SHA=ade3be31c447b8448869fecdfcace258d6d587b8c6c773c5f22735f70d82d6da
@@ -19,7 +19,7 @@ RUN apk add --no-cache gettext \
     && rm -rf ./mod_perl-${MOD_PERL_VERSION}* \
     && apk del --no-cache .build-dependencies
 
-ARG TZDATA_VERSION=2024b-r0
+ARG TZDATA_VERSION=2025a-r0
 ARG AWSTATS_VERSION=7.9-r0
 
 RUN apk add --no-cache awstats=${AWSTATS_VERSION} tzdata=${TZDATA_VERSION} \
