@@ -134,8 +134,26 @@ done
 
 ## Environment variables
 
--   `HTTPD_PORT`\
-     Set listen port for Apache inside container (default 80)
+-   `AWSTATS_CONF_ALLOWFULLYEARVIEW`\
+    Set `AllowFullYearView` (default 2)
+
+-   `AWSTATS_CONF_HOSTALIASES`\
+    Set `HostAliases` (default 'localhost 127.0.0.1 REGEX[^.*$]')
+
+-   `AWSTATS_CONF_INCLUDE`\
+    Set `Include` (default '.')
+
+-   `AWSTATS_CONF_LOGFILE`\
+    Set `LogFile` (default '/var/local/log/access.log')
+
+-   `AWSTATS_CONF_LOGFORMAT`\
+    Set `LogFormat` (default '%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot')
+
+-   `AWSTATS_CONF_SITEDOMAIN`\
+    Set `SiteDomain` (default 'my_website')
+
+-   `AWSTATS_CONF_SKIP_FILES`\
+    Set `SkipFiles` (default '')
 
 -   `AWSTATS_CONF_SKIP_HOSTS`\
     Set `SkipHosts` (default '')
@@ -143,23 +161,5 @@ done
 -   `AWSTATS_CONF_SKIP_USER_AGENTS`\
     Set `SkipUserAgents` (default '')
 
--   `AWSTATS_CONF_SKIP_FILES`\
-    Set `SkipFiles` (default '')
-
--   `AWSTATS_CONF_ALLOWFULLYEARVIEW`\
-    Set `AllowFullYearView` (default 2)
-
--   `AWSTATS_CONF_INCLUDE`\
-    Set `Include` (default '.')
-
--   `AWSTATS_CONF_HOSTALIASES`\
-    Set `HostAliases` (default 'localhost 127.0.0.1 REGEX[^.*$]')
-
--   `AWSTATS_CONF_SITEDOMAIN`\
-    Set `SiteDomain` (default 'my_website')
-
--   `AWSTATS_CONF_LOGFORMAT`\
-    Set `LogFormat` (default '%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot')
-
--   `AWSTATS_CONF_LOGFILE`\
-    Set `LogFile` (default '/var/local/log/access.log')
+-   `HTTPD_PORT`\
+     Set listen port for Apache inside container (default 80)
