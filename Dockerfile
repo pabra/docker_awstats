@@ -3,13 +3,20 @@ FROM httpd:2.4.63-alpine
 ARG MOD_PERL_VERSION=2.0.13
 ARG MOD_PERL_SHA=ade3be31c447b8448869fecdfcace258d6d587b8c6c773c5f22735f70d82d6da
 
+COPY src_modules_perl_modperl__common__util.c.patch /tmp/
+
 RUN apk add --no-cache gettext \
-    && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget perl-dev \
+    && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget patch perl-dev \
     && cd /tmp \
     && wget https://dlcdn.apache.org/perl/mod_perl-${MOD_PERL_VERSION}.tar.gz \
     && echo "${MOD_PERL_SHA}  mod_perl-${MOD_PERL_VERSION}.tar.gz" | sha256sum -c \
     && tar xf mod_perl-${MOD_PERL_VERSION}.tar.gz \
     && cd mod_perl-${MOD_PERL_VERSION} \
+    && mv ../src_modules_perl_modperl__common__util.c.patch ./ \
+    && if [ "$( uname -m )" = "armv7l" ] ; \
+            then patch src/modules/perl/modperl_common_util.c < src_modules_perl_modperl__common__util.c.patch ; \
+            else echo 'no patching' ; \
+       fi \
     && perl Makefile.PL MP_APXS=/usr/local/apache2/bin/apxs MP_APR_CONFIG=/usr/bin/apr-1-config --cflags --cppflags --includes \
     && make -j4 \
     && mv src/modules/perl/mod_perl.so /usr/local/apache2/modules/ \
