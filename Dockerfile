@@ -5,6 +5,8 @@ ARG MOD_PERL_SHA=ade3be31c447b8448869fecdfcace258d6d587b8c6c773c5f22735f70d82d6d
 
 COPY src_modules_perl_modperl__common__util.c.patch /tmp/
 
+ARG TARGETPLATFORM
+
 RUN apk add --no-cache gettext \
     && apk add --no-cache --virtual .build-dependencies apr-dev apr-util-dev gcc libc-dev make wget patch perl-dev \
     && cd /tmp \
@@ -13,7 +15,7 @@ RUN apk add --no-cache gettext \
     && tar xf mod_perl-${MOD_PERL_VERSION}.tar.gz \
     && cd mod_perl-${MOD_PERL_VERSION} \
     && mv ../src_modules_perl_modperl__common__util.c.patch ./ \
-    && if [ "$( uname -m )" = "armv7l" ] ; \
+    && if [ "${TARGETPLATFORM}" = "linux/arm/v7" ] || [ "${TARGETPLATFORM}" = "linux/386" ] ; \
             then patch src/modules/perl/modperl_common_util.c < src_modules_perl_modperl__common__util.c.patch ; \
             else echo 'no patching' ; \
        fi \
