@@ -5,7 +5,7 @@
 
 # README
 
-Awstats container based on `httpd:2.4-alpine` to keep it small. It's configures
+Awstats container based on `httpd:2.4-alpine` to keep it small. It's configured
 that way, so you can easily put a reverse proxy (like Nginx) in front.
 
 Read all about [awstats config](http://www.awstats.org/docs/awstats_config.html)
@@ -15,7 +15,7 @@ Read all about [awstats config](http://www.awstats.org/docs/awstats_config.html)
 -   [`7.9-167-595e606`, `7.9`, `latest`](https://github.com/pabra/docker_awstats/blob/7.9/Dockerfile)
 -   [`7.8-112-16cba36`, `7.8`](https://github.com/pabra/docker_awstats/blob/7.8/Dockerfile)
 -   [`7.7-73-79a6726`, `7.7`](https://github.com/pabra/docker_awstats/blob/7.7/Dockerfile)
--   [`master-148-1ace083`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
+-   [`master-163-8ce8f0f`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
 
 ## Quickstart
 
@@ -131,3 +131,35 @@ for lf in "${LOGFILES[@]}"; do
     docker exec awstats /usr/lib/awstats/cgi-bin/awstats.pl -update -config=my_website -LogFile="$lf"
 done
 ```
+
+## Environment variables
+
+-   `AWSTATS_CONF_ALLOWFULLYEARVIEW`\
+    Set `AllowFullYearView` (default 2)
+
+-   `AWSTATS_CONF_HOSTALIASES`\
+    Set `HostAliases` (default 'localhost 127.0.0.1 REGEX[^.*$]')
+
+-   `AWSTATS_CONF_INCLUDE`\
+    Set `Include` (default '.')
+
+-   `AWSTATS_CONF_LOGFILE`\
+    Set `LogFile` (default '/var/local/log/access.log')
+
+-   `AWSTATS_CONF_LOGFORMAT`\
+    Set `LogFormat` (default '%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot')
+
+-   `AWSTATS_CONF_SITEDOMAIN`\
+    Set `SiteDomain` (default 'my_website')
+
+-   `AWSTATS_CONF_SKIP_FILES`\
+    Set `SkipFiles` (default '')
+
+-   `AWSTATS_CONF_SKIP_HOSTS`\
+    Set `SkipHosts` (default '')
+
+-   `AWSTATS_CONF_SKIP_USER_AGENTS`\
+    Set `SkipUserAgents` (default '')
+
+-   `HTTPD_PORT`\
+     Set listen port for Apache inside container (default 80)
