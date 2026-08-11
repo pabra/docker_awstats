@@ -1,6 +1,6 @@
 
 
-   Last Update:     17 Sep 2020 - 05:25 [1]Awstats Web Site
+   Last Update:     17 Sep 2020 - 05:25 [1][awstats_logo6.png]
    Reported period: [Month] [Feb_____] [2020] OK
 
    Summary
@@ -310,7 +310,7 @@
 
    * Codes shown here gave hits or traffic "not viewed" by visitors, so
    they are not included in other charts.
-   Advanced Web Statistics 7.9 (build 20230108) - [21]Created by awstats
+   Advanced Web Statistics 8.0 (build 20240604) - [21]Created by awstats
 
 References
 
