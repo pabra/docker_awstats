@@ -1,6 +1,6 @@
 [![Docker Image Version](https://img.shields.io/docker/v/pabra/awstats/edge?logo=docker&sort=semver)](https://hub.docker.com/r/pabra/awstats)
 [![Docker Pulls](https://img.shields.io/docker/pulls/pabra/awstats?label=pulls&logo=docker)](https://hub.docker.com/r/pabra/awstats)
-[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pabra/awstats/7.8?label=size&logo=docker)](https://hub.docker.com/r/pabra/awstats)
+[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pabra/awstats/latest?label=size&logo=docker)](https://hub.docker.com/r/pabra/awstats)
 [![docker-build-and-push](https://github.com/pabra/docker_awstats/workflows/docker-build-and-push/badge.svg?branch=master)](https://github.com/pabra/docker_awstats/actions?query=workflow%3Adocker-build-and-push+branch%3Amaster)
 
 # README
@@ -16,7 +16,7 @@ Read all about [awstats config](http://www.awstats.org/docs/awstats_config.html)
 -   [`7.9-185-b5ccf02`, `7.9`](https://github.com/pabra/docker_awstats/blob/7.9/Dockerfile)
 -   [`7.8-112-16cba36`, `7.8`](https://github.com/pabra/docker_awstats/blob/7.8/Dockerfile)
 -   [`7.7-73-79a6726`, `7.7`](https://github.com/pabra/docker_awstats/blob/7.7/Dockerfile)
--   [`master-163-8ce8f0f`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
+-   [`master-172-94c20f4`, `edge`](https://github.com/pabra/docker_awstats/blob/master/Dockerfile)
 
 ## Quickstart
 
